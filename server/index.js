@@ -2,11 +2,15 @@ const express = require('express')
 let server = express()
 const parser = require('body-parser')
 const router = require('./routes')
+const session = require('express-session')
 
 //Install Middleware
 server.use(parser.json())
 server.use(express.static(__dirname + '/../client/dist'))
 server.use('/pets', router)
+server.use(session({
+    secret: 'I can haz pet?'
+}))
 
 //Method Section
 
