@@ -1,13 +1,14 @@
 import React from 'react'
 import ReactDom from 'react-dom'
 import axios from 'axios'
-import ReactRoute from 'react-router-dom'
+import {BrowserRouter as Router, Link, Route, Redirect} from 'react-router-dom'
+import Navbar from './components/navbar.jsx'
 
 class App extends React.Component {
     constructor(props) {
         super(props)
         this.state ={
-            //some state
+            loggedIn: true
         }
     }
 
@@ -19,9 +20,14 @@ class App extends React.Component {
     //Render Section
     render() {
         return(
-            <div>
-                we're on the page!
-            </div>
+            <Router>
+                <div className="container">
+                    <Navbar loggedIn = {this.state.loggedIn} />
+                    we're on the page!
+                    {/* <Switch>
+                    </Switch> */}
+                </div>
+            </Router>
         )
     }
 }
