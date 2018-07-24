@@ -6,6 +6,7 @@ var config = {
     storageBucket: "",
     messagingSenderId: "189802972639"
 };
+const firebase = require('firebase')
 firebase.initializeApp(config);
 
 const database = firebase.database()
