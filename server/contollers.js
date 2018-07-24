@@ -12,14 +12,14 @@ module.exports = {
     },
 
     more: {
-        get: (req, res) => {
+        get: async (req, res) => {
             console.log('in the server controllers.')
-            axios.get(`http://api.petfinder.com/pet.getRandom?key=${API_KEY}&output=basic&format=json`)
-                 .then((response) => {
-                     console.log(response.data)
-                     res.send(response.data)
-                 })
-                 .catch((err) => console.log(err))
+            let pet1 = await axios.get(`http://api.petfinder.com/pet.getRandom?key=${API_KEY}&output=basic&format=json`)
+            let pet2 = await axios.get(`http://api.petfinder.com/pet.getRandom?key=${API_KEY}&output=basic&format=json`)
+            let pet3 = await axios.get(`http://api.petfinder.com/pet.getRandom?key=${API_KEY}&output=basic&format=json`)
+            let pet4 = await axios.get(`http://api.petfinder.com/pet.getRandom?key=${API_KEY}&output=basic&format=json`)
+            let pet5 = await axios.get(`http://api.petfinder.com/pet.getRandom?key=${API_KEY}&output=basic&format=json`)
+            res.send([pet1.data, pet2.data, pet3.data, pet4.data, pet5.data])
         }
     },
 
