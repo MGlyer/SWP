@@ -9,7 +9,10 @@ module.exports = {
     },
 
     more: {
-        get: (req, res) => {}
+        get: (req, res) => {
+            console.log('in the server controllers.')
+            res.send('all is quiet on the western front')
+        }
     },
 
     swipeRight: {
