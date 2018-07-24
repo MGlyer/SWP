@@ -3,6 +3,7 @@ let server = express()
 const parser = require('body-parser')
 const router = require('./routes')
 const session = require('express-session')
+const axios = require('axios')
 
 //Install Middleware
 server.use(parser.json())
