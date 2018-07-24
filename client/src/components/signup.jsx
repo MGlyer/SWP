@@ -30,7 +30,8 @@ class Signup extends React.Component {
                 Username: <input type= 'text' onChange = {this.handleUNChange} />
                 <br/>
                 Password: <input type= 'password' onChange = {this.handlePWChange} />
-                <button onClick = {props.handleSignUp}>Sign up</button>
+                <br/>
+                <button onClick = {() => this.props.signup(this.state.usernameValue, this.state.passwordValue)}>Sign up</button>
             </div>
         )
     }

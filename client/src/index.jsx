@@ -14,6 +14,7 @@ class App extends React.Component {
             user: ''
         }
         this.handleSignup = this.handleSignup.bind(this)
+        this.handleLogin = this.handleLogin.bind(this)
     }
 
 
@@ -23,6 +24,14 @@ class App extends React.Component {
              .then((response) => {
                  console.log(response.data)
                  this.setState({user: newUsername, loggedIn: true})
+             })
+             .catch((err) => console.error(err))
+    }
+
+    handleLogin(username, password) {
+        axios.get('/pets/login', {params: {username: username, password, password}})
+             .then((response) => {
+                 console.log(response.data)
              })
              .catch((err) => console.error(err))
     }
@@ -37,7 +46,7 @@ class App extends React.Component {
                     we're on the page!
                     <Switch>
                         <Route exact path='/' render = {() => <Redirect to='/login' />} />
-                        <Route path='/login' render = {() => <Login />} />
+                        <Route path='/login' render = {() => <Login login = {this.handleLogin} />} />
                         <Route path='/signup' render = {() => <Signup signup = {this.handleSignup} />} />
                     </Switch>
                 </div>

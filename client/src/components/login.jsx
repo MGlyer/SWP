@@ -24,9 +24,12 @@ class Login extends React.Component {
     render() {
         return(
             <div>
+                <h2>Log In</h2>
                 Username: <input type='text' onChange = {this.handleUNChange} />
                 <br/>
                 Password: <input type='password' onChange = {this.handlePWChange} />
+                <br/>
+                <button>Log In</button>
             </div>
         )
     }
