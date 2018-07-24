@@ -1,10 +1,19 @@
 const { API_KEY, API_SECRET } = require('./../config.js')
 const axios = require('axios')
+const { saveNewUser } = require('./../database/index.js')
 
 module.exports = {
     //write out GETS and POSTS here
     signup: {
-        post: (req, res) => {}
+        post: (req, res) => {
+            let username = req.body.username;
+            let password = req.body.password;
+            saveNewUser(username, password, (err, unique) => {
+                if (err) console.log('something went wrong querying the db: ', err)
+                if (null, false) res.send('that username is already taken')
+                else res.send('successfully added to the database!')
+            })
+        }
     },
 
     login: {
