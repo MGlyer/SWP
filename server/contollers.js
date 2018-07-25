@@ -17,7 +17,12 @@ module.exports = {
     },
 
     login: {
-        get: (req, res) => {}
+        get: (req, res) => {
+            let username = req.query.username
+            let password = req.query.password
+
+            console.log('in the server, logging in with: ', username, password)
+        }
     },
 
     more: {

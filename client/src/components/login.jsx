@@ -29,7 +29,7 @@ class Login extends React.Component {
                 <br/>
                 Password: <input type='password' onChange = {this.handlePWChange} />
                 <br/>
-                <button>Log In</button>
+                <button onClick= {() => this.props.login(this.state.usernameValue, this.state.passwordValue)} >Log In</button>
             </div>
         )
     }
