@@ -11,7 +11,9 @@ class App extends React.Component {
         super(props)
         this.state ={
             loggedIn: false,
-            user: ''
+            user: '',
+            loginError: false,
+            signupError: false
         }
         this.handleSignup = this.handleSignup.bind(this)
         this.handleLogin = this.handleLogin.bind(this)
@@ -22,17 +24,18 @@ class App extends React.Component {
     handleSignup(newUsername, NewPassword) {
         axios.post('/pets/signup', {username: newUsername, password: NewPassword})
              .then((response) => {
-                 console.log(response.data)
-                 this.setState({user: newUsername, loggedIn: true})
-             })
+                 if (response.data) this.setState({user: newUsername, loggedIn: true, signupError: false})
+                 else this.setState({signupError: true})
+             }, () => <Redirect to= '/global'/>)
              .catch((err) => console.error(err))
     }
 
     handleLogin(username, password) {
         axios.get('/pets/login', {params: {username: username, password, password}})
              .then((response) => {
-                 console.log(response.data)
-             })
+                 if (response.data) this.setState({user: username, loggedIn: true, loginError: false})
+                 else this.setState({loginError: true})
+             }, () => <Redirect to= '/global'/>)
              .catch((err) => console.error(err))
     }
 
@@ -46,8 +49,8 @@ class App extends React.Component {
                     we're on the page!
                     <Switch>
                         <Route exact path='/' render = {() => <Redirect to='/login' />} />
-                        <Route path='/login' render = {() => <Login login = {this.handleLogin} />} />
-                        <Route path='/signup' render = {() => <Signup signup = {this.handleSignup} />} />
+                        <Route path='/login' render = {() => <Login login = {this.handleLogin} error = {this.state.loginError} />} />
+                        <Route path='/signup' render = {() => <Signup signup = {this.handleSignup} error = {this.state.signupError} />} />
                     </Switch>
                 </div>
             </Router>

@@ -27,6 +27,7 @@ class Signup extends React.Component {
         return(
             <div>
                 <h2>Sign up</h2>
+                {this.props.error ? <div>That Username is already taken.  Please try another</div>: null}
                 Username: <input type= 'text' onChange = {this.handleUNChange} />
                 <br/>
                 Password: <input type= 'password' onChange = {this.handlePWChange} />
