@@ -13,6 +13,10 @@ class Swiper extends React.Component {
         this.nextPet = this.nextPet.bind(this)
     }
 
+    componentDidMount() {
+        this.getMorePets()
+    }
+
 
     //Method section
     getMorePets() {
