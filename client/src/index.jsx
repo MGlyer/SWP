@@ -1,7 +1,7 @@
 import React from 'react'
 import ReactDom from 'react-dom'
 import axios from 'axios'
-import {BrowserRouter as Router, Link, Route, Redirect, Switch} from 'react-router-dom'
+import {BrowserRouter as Router, Route, Redirect, Switch} from 'react-router-dom'
 import Navbar from './components/navbar.jsx'
 import Login from './components/login.jsx'
 import Signup from './components/signup.jsx'
@@ -18,6 +18,7 @@ class App extends React.Component {
         }
         this.handleSignup = this.handleSignup.bind(this)
         this.handleLogin = this.handleLogin.bind(this)
+        this.goToGlobal = this.goToGlobal.bind(this)
     }
 
 
@@ -25,19 +26,27 @@ class App extends React.Component {
     handleSignup(newUsername, NewPassword) {
         axios.post('/pets/signup', {username: newUsername, password: NewPassword})
              .then((response) => {
-                 if (response.data) this.setState({user: newUsername, loggedIn: true, signupError: false})
+                 if (response.data) this.setState({user: newUsername, loggedIn: true, signupError: false}, () => this.goToGlobal())
                  else this.setState({signupError: true})
-             }, () => <Redirect to= '/global'/>)
+             })
              .catch((err) => console.error(err))
     }
 
     handleLogin(username, password) {
         axios.get('/pets/login', {params: {username: username, password, password}})
              .then((response) => {
-                 if (response.data) this.setState({user: username, loggedIn: true, loginError: false})
+                 if (response.data) {
+                     this.setState({user: username, loggedIn: true, loginError: false});
+                     this.goToGlobal()
+                 }
                  else this.setState({loginError: true})
-             }, () => <Redirect to= '/global'/>)
+             })
              .catch((err) => console.error(err))
+    }
+
+    goToGlobal() {
+        console.log('redirecting to global!');
+        <Redirect to='/global' />
     }
 
 
