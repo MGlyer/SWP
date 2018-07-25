@@ -37,7 +37,7 @@ class Swiper extends React.Component {
         return(
             <div>
                 <div className='petContainer'>
-                    <PetProfile />
+                    <PetProfile petInfo = {this.state.listOfAnimals.length > 0 ? this.state.listOfAnimals[0].petfinder.pet : null} />
                 </div>
                 <button onClick = {this.nextPet} >Swipe Left</button>
                 <button>Swipe Right</button>
