@@ -1,6 +1,6 @@
 const { API_KEY, API_SECRET } = require('./../config.js')
 const axios = require('axios')
-const { saveNewUser } = require('./../database/index.js')
+const { saveNewUser, userLogin } = require('./../database/index.js')
 
 module.exports = {
     //write out GETS and POSTS here
@@ -20,8 +20,11 @@ module.exports = {
         get: (req, res) => {
             let username = req.query.username
             let password = req.query.password
-
-            console.log('in the server, logging in with: ', username, password)
+            userLogin(username, (error, validUsername, docs) => {
+                if (error) console.log(error)
+                if (null, !validUsername) console.log('that is not a valid username')
+                else console.log('docs from the database',docs)
+            })
         }
     },
 
