@@ -14,11 +14,13 @@ class App extends React.Component {
             loggedIn: false,
             user: '',
             loginError: false,
-            signupError: false
+            signupError: false,
+            swipeRights: []
         }
         this.handleSignup = this.handleSignup.bind(this)
         this.handleLogin = this.handleLogin.bind(this)
         this.goToGlobal = this.goToGlobal.bind(this)
+        this.swipeRight = this.swipeRight.bind(this)
     }
 
 
@@ -30,6 +32,12 @@ class App extends React.Component {
                  else this.setState({signupError: true})
              })
              .catch((err) => console.error(err))
+    }
+
+    swipeRight(newPet) {
+        let currentRights = this.state.swipeRights
+        currentRights.push(newPet)
+        this.setState({swipeRights: currentRights})
     }
 
     handleLogin(username, password) {
@@ -61,7 +69,7 @@ class App extends React.Component {
                         <Route exact path='/' render = {() => <Redirect to='/login' />} />
                         <Route path='/login' render = {() => <Login login = {this.handleLogin} error = {this.state.loginError} />} />
                         <Route path='/signup' render = {() => <Signup signup = {this.handleSignup} error = {this.state.signupError} />} />
-                        <Route path='/global' render = {() => <Swiper /> } />
+                        <Route path='/global' render = {() => <Swiper swipe = {this.swipeRight} /> } />
                     </Switch>
                 </div>
             </Router>
