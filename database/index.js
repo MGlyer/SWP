@@ -21,7 +21,18 @@ const userLogin = async (username, cb) => {
         let savedPassword = await db.ref('/users/' + username + '/password').once('value')
         cb(null, true, savedPassword.val())
     }
+}
 
+const swipeRight = async (username, pet, cb) => {
+    let petToAdd = {[pet.id.$t]: pet}
+    let check = await db.ref('/users/' + username + '/swipes').once('value')
+    if (!check.exists()) {
+        db.ref('/users/' + username).set({swipes: petToAdd})
+        cb(null)
+    } else {
+        db.ref('/users/' + username + '/swipes/').set(petToAdd)
+        cb(null)
+    }
 }
 
 

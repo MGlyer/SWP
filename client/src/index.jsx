@@ -38,6 +38,9 @@ class App extends React.Component {
         let currentRights = this.state.swipeRights
         currentRights.push(newPet)
         this.setState({swipeRights: currentRights})
+        axios.post('/pets/swipeRight', {pet: newPet, user: this.state.user})
+             .then((repsonse) => console.log('we saved that to your favorites!'))
+             .catch((err) => console.error(err))
     }
 
     handleLogin(username, password) {
