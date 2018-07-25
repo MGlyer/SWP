@@ -10,7 +10,7 @@ module.exports = {
             let password = req.body.password;
             saveNewUser(username, password, (err, unique) => {
                 if (err) console.log('something went wrong querying the db: ', err)
-                if (null, false) res.send('that username is already taken')
+                if (null, !unique) res.send('that username is already taken')
                 else res.send('successfully added to the database!')
             })
         }
