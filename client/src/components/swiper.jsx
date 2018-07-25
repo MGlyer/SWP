@@ -1,5 +1,6 @@
 import React from 'react'
 import axios from 'axios'
+import PetProfile from './pet.jsx'
 
 class Swiper extends React.Component {
     constructor(props) {
@@ -36,7 +37,7 @@ class Swiper extends React.Component {
         return(
             <div>
                 <div className='petContainer'>
-                    <span>some info about the pet</span>
+                    <PetProfile />
                 </div>
                 <button onClick = {this.nextPet} >Swipe Left</button>
                 <button>Swipe Right</button>
