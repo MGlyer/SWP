@@ -38,5 +38,6 @@ const swipeRight = async (username, pet, cb) => {
 
 module.exports = {
     saveNewUser,
-    userLogin
+    userLogin,
+    swipeRight
 }

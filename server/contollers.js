@@ -1,6 +1,6 @@
 const { API_KEY, API_SECRET } = require('./../config.js')
 const axios = require('axios')
-const { saveNewUser, userLogin } = require('./../database/index.js')
+const { saveNewUser, userLogin, swipeRight } = require('./../database/index.js')
 
 module.exports = {
     //write out GETS and POSTS here
@@ -46,6 +46,13 @@ module.exports = {
     },
 
     swipeRight: {
-        post: (req, res) => {}
+        post: (req, res) => {
+            let pet = req.body.pet;
+            let username = req.body.user;
+            swipeRight(username, pet, (error) => {
+                if (error) console.log(error)
+                else res.send('saved to your profile!')
+            })
+        }
     }
 }
