@@ -84,7 +84,6 @@ class App extends React.Component {
                 <div>
                 {this.state.redirect ? <Redirect to='/global' /> : null }
                     <Navbar loggedIn = {this.state.loggedIn} />
-                    we're on the page!
                     <Switch>
                         <Route exact path='/' render = {() => <Redirect to='/login' />} />
                         <Route path='/login' render = {() => <Login login = {this.handleLogin} error = {this.state.loginError} />} />

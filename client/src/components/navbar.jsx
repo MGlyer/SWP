@@ -8,14 +8,14 @@ let Navbar = (props) => {
                 {
                     props.loggedIn ?
                     <ul>
-                        <Link to= '/global'>Swipe</Link>
-                        <Link to= '/rights'>Review Swipes</Link>
-                        <Link to= '/login'>Sign Out</Link>
+                        <Link type="button" class="btn btn-info" to= '/global'>Swipe</Link>
+                        <Link type="button" class="btn btn-info" to= '/rights'>Review Swipes</Link>
+                        <Link type="button" class="btn btn-secondary" to= '/login'>Sign Out</Link>
                     </ul>
                     :
                     <ul>
-                        <Link to= '/login'>Login</Link>
-                        <Link to= '/signup'>Signup</Link>
+                        <Link type="button" class="btn btn-info" to= '/login'>Login</Link>
+                        <Link type="button" class="btn btn-info" to= '/signup'>Signup</Link>
                     </ul>
                 }
         </div>
