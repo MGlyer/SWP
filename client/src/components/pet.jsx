@@ -22,7 +22,7 @@ class PetProfile extends React.Component {
                     <div className = 'petInfo'>
                         <p>Name: {pet.name ? pet.name : null}</p>
                         <p>Type of Animal: {pet.animal ? pet.animal : null}</p>
-                        {/* <p>Breed: {pet.breeds.breed ? pet.breeds.breed : null}</p> */}
+                        <p>Breed: {pet.breeds ? pet.breeds.breed : null}</p>
                         <p>Age: {pet.age ? pet.age : null}</p>
                         <p>Gender: {pet.sex ? pet.sex : null}</p>
                         <p>Size: {pet.size ? pet.size : null}</p>

@@ -24,7 +24,7 @@ class Login extends React.Component {
     render() {
         return(
             <div>
-                <h2>Log In</h2>
+                <h3>Log In</h3>
                 {this.props.error ? <div>Invalid Username or Password.  please try again</div> : null}
                 Username: <input type='text' onChange = {this.handleUNChange} />
                 <br/>

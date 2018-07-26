@@ -4,7 +4,8 @@ import { Link } from 'react-router-dom'
 let Navbar = (props) => {
     return(
         <div class = 'container.fluid'>
-            <span>Swipe Right To Adopt</span>
+            <h2>Swipe Right To Adopt</h2>
+            <div>
                 {
                     props.loggedIn ?
                     <ul>
@@ -18,6 +19,7 @@ let Navbar = (props) => {
                         <Link type="button" class="btn btn-info" to= '/signup'>Signup</Link>
                     </ul>
                 }
+            </div>
         </div>
     )
 }
