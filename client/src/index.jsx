@@ -6,6 +6,7 @@ import Navbar from './components/navbar.jsx'
 import Login from './components/login.jsx'
 import Signup from './components/signup.jsx'
 import Swiper from './components/swiper.jsx'
+import Favorites from './components/favorites.jsx'
 
 class App extends React.Component {
     constructor(props) {
@@ -73,6 +74,7 @@ class App extends React.Component {
                         <Route path='/login' render = {() => <Login login = {this.handleLogin} error = {this.state.loginError} />} />
                         <Route path='/signup' render = {() => <Signup signup = {this.handleSignup} error = {this.state.signupError} />} />
                         <Route path='/global' render = {() => <Swiper swipe = {this.swipeRight} /> } />
+                        <Route path='/rights' render = {() => <Favorites faves = {this.state.swipeRights.length > 0 ? this.state.swipeRights : null} /> } />
                     </Switch>
                 </div>
             </Router>
