@@ -24,7 +24,6 @@ class PetProfile extends React.Component {
 
                     </div>
                     <br/>
-
                         
                         {this.props.showDescription ? 
                     <div className = 'petInfo'>

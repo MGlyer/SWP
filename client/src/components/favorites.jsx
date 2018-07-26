@@ -19,6 +19,7 @@ class Favorites extends React.Component {
     }
 
     handleViewFave(pet) {
+        console.log('you clicked a pet!')
         this.setState({viewingSingle: true, faveToView: pet})
     }
 
@@ -34,8 +35,8 @@ class Favorites extends React.Component {
                     <div class='row'>
                         {this.props.faves.map((fave) => {
                             return(
-                                <div class= 'col-4'>
-                                <PetProfile petInfo = {fave} onSwiper = {false} view = {this.handleViewFave} />
+                                <div class= 'col-4' onClick = {() => this.handleViewFave(fave)}>
+                                <PetProfile petInfo = {fave} onSwiper = {false}  />
                                 </div>
                             )
                         })}                        
