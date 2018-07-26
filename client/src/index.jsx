@@ -24,6 +24,7 @@ class App extends React.Component {
         this.goToGlobal = this.goToGlobal.bind(this)
         this.swipeRight = this.swipeRight.bind(this)
         this.handleSwipeFetch = this.handleSwipeFetch.bind(this)
+        this.handleSignout = this.handleSignout.bind(this)
     }
 
 
@@ -77,6 +78,10 @@ class App extends React.Component {
              .catch((err) => console.error(err))
     }
 
+    handleSignout() {
+        this.setState({user: '', loggedIn: false, swipeRights: [], redirect: false})
+    }
+
 
     //Render Section
     render() {
@@ -84,7 +89,7 @@ class App extends React.Component {
             <Router>
                 <div>
                 {this.state.redirect ? <Redirect to='/global' /> : null }
-                    <Navbar loggedIn = {this.state.loggedIn} />
+                    <Navbar loggedIn = {this.state.loggedIn} signout = {this.handleSignout} />
                     <Switch>
                         <Route exact path='/' render = {() => <Redirect to='/login' />} />
                         <Route path='/login' render = {() => <Login login = {this.handleLogin} error = {this.state.loginError} />} />
