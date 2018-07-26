@@ -28,11 +28,12 @@ const swipeRight = async (username, pet, cb) => {
 
     // console.log(petToAdd)
     let check = await db.ref('/users/' + username + '/swipes').once('value')
+    console.log(check.val())
     if (!check.exists()) {
-        db.ref('/users/' + username).set({swipes: petToAdd})
+        db.ref('/users/' + username + '/swipes/').set(petToAdd)
         cb(null)
     } else {
-        db.ref('/users/' + username + '/swipes/').set(petToAdd)
+        db.ref('/users/' + username + '/swipes/' + pet.id).set(pet)
         cb(null)
     }
 }
