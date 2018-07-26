@@ -1,5 +1,6 @@
+const {FIREBASE_API_KEY} = require('./../config')
 var config = {
-    apiKey: "AIzaSyDkcbRVYG6dYNXxzYjWV4p6xwTmKce7a-4",
+    apiKey: FIREBASE_API_KEY,
     // authDomain: "swp-petadoption.firebaseapp.com",
     authDomain: "localhost:8080",
     databaseURL: "https://swp-petadoption.firebaseio.com",
