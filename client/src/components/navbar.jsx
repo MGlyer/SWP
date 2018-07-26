@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 
 let Navbar = (props) => {
     return(
-        <div>
+        <div class = 'container.fluid'>
             <span>Swipe Right To Adopt</span>
                 {
                     props.loggedIn ?

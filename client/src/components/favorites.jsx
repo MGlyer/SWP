@@ -16,12 +16,16 @@ class Favorites extends React.Component {
     render() {
         if (this.props.faves) {
             return(
-                <div>
-                    {this.props.faves.map((fave) => {
-                        return(
-                            <PetProfile petInfo = {fave} />
-                        )
-                    })}
+                <div class = 'container'>
+                    <div class='row'>
+                        {this.props.faves.map((fave) => {
+                            return(
+                                <div class= 'col-4'>
+                                <PetProfile petInfo = {fave} />
+                                </div>
+                            )
+                        })}                        
+                    </div>
                 </div>
             )
         } else {

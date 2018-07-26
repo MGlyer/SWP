@@ -81,7 +81,7 @@ class App extends React.Component {
     render() {
         return(
             <Router>
-                <div className="container">
+                <div>
                 {this.state.redirect ? <Redirect to='/global' /> : null }
                     <Navbar loggedIn = {this.state.loggedIn} />
                     we're on the page!

@@ -46,17 +46,19 @@ class Swiper extends React.Component {
     render() {
         return(
             <div>
+                <div className = 'btnContainer'>
+                    <button type='button' class='btn btn-danger'  onClick = {this.nextPet} >Swipe Left</button>
+                    <button type='button' class='btn btn-info' onClick = {this.toggleShowDescription}>Toggle More Info</button>
+                    <button type='button' class='btn btn-success' onClick = {() => {
+                        this.props.swipe(this.state.listOfAnimals[0].petfinder.pet);
+                        this.nextPet()
+                    }
+                        } >Swipe Right</button>
+                    {/* <button onClick = {this.getMorePets}>More Life</button> */}
+                </div>
                 <div className='petContainer'>
                     <PetProfile showDescription = {this.state.showDescription} petInfo = {this.state.listOfAnimals.length > 0 ? this.state.listOfAnimals[0].petfinder.pet : null} />
                 </div>
-                <button onClick = {this.nextPet} >Swipe Left</button>
-                <button onClick = {() => {
-                    this.props.swipe(this.state.listOfAnimals[0].petfinder.pet);
-                    this.nextPet()
-                }
-                    } >Swipe Right</button>
-                {/* <button onClick = {this.getMorePets}>More Life</button> */}
-                <button onClick = {this.toggleShowDescription}>Toggle More Info</button>
             </div>
         )
     }

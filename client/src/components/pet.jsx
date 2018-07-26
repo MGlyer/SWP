@@ -14,10 +14,12 @@ class PetProfile extends React.Component {
         if (pet) {
             return (
                 <div>
-                    <img src = {pet.media.photos.photo[2] ? pet.media.photos.photo[2].img : null} />
+                    <div className = 'petInfo'>
+                        <img src = {pet.media.photos.photo[2] ? pet.media.photos.photo[2].img : null} />
+                    </div>
                     <br/>
 
-                    <div>
+                    <div className = 'petInfo'>
                         <p>Name: {pet.name ? pet.name : null}</p>
                         <p>Type of Animal: {pet.animal ? pet.animal : null}</p>
                         {/* <p>Breed: {pet.breeds.breed ? pet.breeds.breed : null}</p> */}
