@@ -1,6 +1,7 @@
 const { API_KEY, API_SECRET } = require('./../config.js')
 const axios = require('axios')
 const { saveNewUser, userLogin, swipeRight } = require('./../database/index.js')
+const { scrubber } = require('./scrubber')
 
 module.exports = {
     //write out GETS and POSTS here
@@ -41,6 +42,8 @@ module.exports = {
             // let pet4 = await axios.get(`http://api.petfinder.com/pet.getRandom?key=${API_KEY}&output=basic&format=json`)
             // let pet5 = await axios.get(`http://api.petfinder.com/pet.getRandom?key=${API_KEY}&output=basic&format=json`)
             // res.send([pet1.data, pet2.data, pet3.data, pet4.data, pet5.data])
+            scrubber(pet1.data)
+            scrubber(pet2.data)
             res.send([pet1.data, pet2.data])
         }
     },
@@ -48,6 +51,8 @@ module.exports = {
     swipeRight: {
         post: (req, res) => {
             let pet = req.body.pet;
+            let id = req.body.pet.id.$t
+            pet.id = id
             let username = req.body.user;
             swipeRight(username, pet, (error) => {
                 if (error) console.log(error)
