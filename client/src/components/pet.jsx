@@ -12,16 +12,16 @@ class PetProfile extends React.Component {
         var pet = this.props.petInfo
         return(
             <div>
-                <img src = {pet ? pet.media.photos.photo[0].$t : null} />
+                <img src = {pet ? pet.media.photos.photo[0].img : null} />
                 <br/>
 
                 <div>
-                    <p>Name: {pet ? pet.name.$t : null}</p>
-                    <p>Type of Animal: {pet ? pet.animal.$t : null}</p>
-                    <p>Breed: {pet ? pet.breeds.breed.$t : null}</p>
-                    <p>Age: {pet ? pet.age.$t : null}</p>
-                    <p>Gender: {pet ? pet.sex.$t : null}</p>
-                    <p>Size: {pet ? pet.size.$t : null}</p>
+                    <p>Name: {pet ? pet.name : null}</p>
+                    <p>Type of Animal: {pet ? pet.animal : null}</p>
+                    <p>Breed: {pet ? pet.breeds.breed : null}</p>
+                    <p>Age: {pet ? pet.age : null}</p>
+                    <p>Gender: {pet ? pet.sex : null}</p>
+                    <p>Size: {pet ? pet.size : null}</p>
                 </div>
             </div>
         )

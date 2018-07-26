@@ -22,10 +22,13 @@ module.exports = {
 
         delete scrubbed.options
 
-        scrubbed.media.photos.photo.forEach((media) => {
-            media.img = media.$t
-            delete media.$t
-        })
+        if (scrubbed.media.hasOwnProperty('photos')) {
+            scrubbed.media.photos.photo.forEach((media) => {
+                media.img = media.$t
+                delete media.$t
+            })
+        }
+
 
         for (var key in scrubbed.contact) {
             if (scrubbed.contact[key].hasOwnProperty("$t")) {
