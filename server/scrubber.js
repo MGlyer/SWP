@@ -11,6 +11,8 @@ module.exports = {
         scrubbed.name = scrubbed.name.$t
         scrubbed.sex = scrubbed.sex.$t
         scrubbed.size = scrubbed.size.$t
+        scrubbed.shelterId = scrubbed.shelterId.$t
+        scrubbed.shelterPetId = scrubbed.shelterPetId.$t
 
         // if (scrubbed.options.hasOwnProperty('option')) {
         //     let optionsArr = [];
@@ -21,6 +23,7 @@ module.exports = {
         // }
 
         delete scrubbed.options
+        delete scrubbed.status
 
         if (scrubbed.media.hasOwnProperty('photos')) {
             scrubbed.media.photos.photo.forEach((media) => {

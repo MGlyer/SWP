@@ -25,6 +25,8 @@ const userLogin = async (username, cb) => {
 
 const swipeRight = async (username, pet, cb) => {
     let petToAdd = {[pet.id]: pet}
+
+    // console.log(petToAdd)
     let check = await db.ref('/users/' + username + '/swipes').once('value')
     if (!check.exists()) {
         db.ref('/users/' + username).set({swipes: petToAdd})
