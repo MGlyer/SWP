@@ -7,14 +7,20 @@ class Swiper extends React.Component {
         super(props)
         this.state = {
             listOfAnimals: [],
-            zipcode: '10031'
+            zipcode: '10031',
+            showDescription: false
         }
         this.getMorePets = this.getMorePets.bind(this)
         this.nextPet = this.nextPet.bind(this)
+        this.toggleShowDescription = this.toggleShowDescription.bind(this)
     }
 
     componentDidMount() {
         this.getMorePets()
+    }
+
+    toggleShowDescription() {
+        this.setState({showDescription: !this.state.showDescription})
     }
 
 
@@ -41,7 +47,7 @@ class Swiper extends React.Component {
         return(
             <div>
                 <div className='petContainer'>
-                    <PetProfile petInfo = {this.state.listOfAnimals.length > 0 ? this.state.listOfAnimals[0].petfinder.pet : null} />
+                    <PetProfile showDescription = {this.state.showDescription} petInfo = {this.state.listOfAnimals.length > 0 ? this.state.listOfAnimals[0].petfinder.pet : null} />
                 </div>
                 <button onClick = {this.nextPet} >Swipe Left</button>
                 <button onClick = {() => {
@@ -49,7 +55,8 @@ class Swiper extends React.Component {
                     this.nextPet()
                 }
                     } >Swipe Right</button>
-                <button onClick = {this.getMorePets}>More Life</button>
+                {/* <button onClick = {this.getMorePets}>More Life</button> */}
+                <button onClick = {this.toggleShowDescription}>Toggle More Info</button>
             </div>
         )
     }

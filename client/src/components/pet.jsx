@@ -22,6 +22,10 @@ class PetProfile extends React.Component {
                     <p>Age: {pet ? pet.age : null}</p>
                     <p>Gender: {pet ? pet.sex : null}</p>
                     <p>Size: {pet ? pet.size : null}</p>
+                    {this.props.showDescription ? 
+                        <p>Description: {pet ? pet.description : null}</p>
+                        : null
+                    }
                 </div>
             </div>
         )
