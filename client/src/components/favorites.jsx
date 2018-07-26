@@ -19,19 +19,45 @@ class Favorites extends React.Component {
     }
 
     handleViewFave(pet) {
-        console.log('you clicked a pet!')
         this.setState({viewingSingle: true, faveToView: pet})
     }
 
     render() {
+        let pet = this.state.faveToView
         if (this.props.faves) {
             return(
                 <div class = 'container'>
                 {this.state.viewingSingle ? 
-                    <button type='button' class = 'btn btn-info'
-                        onClick = {this.handleBackToFaves}
-                    >Back to Swipes</button>
+
+                    /*viewing single favorite section*/
+
+                    <div>
+                        <div>
+                        <button type='button' class = 'btn btn-info'
+                            onClick = {this.handleBackToFaves}
+                        >Back to Swipes</button>
+                        </div>
+
+                        <div>
+
+                            <div className = 'petInfo'>
+                            <img src = {pet.media.photos.photo[3] ? pet.media.photos.photo[3].img : null} />
+                                <p>Name: {pet.name ? pet.name : null}</p>
+                                <p>Type of Animal: {pet.animal ? pet.animal : null}</p>
+                                <p>Breed: {pet.breeds ? pet.breeds.breed : null}</p>
+                                <p>Age: {pet.age ? pet.age : null}</p>
+                                <p>Gender: {pet.sex ? pet.sex : null}</p>
+                                <p>Size: {pet.size ? pet.size : null}</p>
+                                <p>Description: {pet ? pet.description : null}</p>
+                            </div>
+                        </div>
+
+                    </div>
+                    
                     :
+
+
+                    /*basic favorite section*/
                     <div class='row'>
                         {this.props.faves.map((fave) => {
                             return(
