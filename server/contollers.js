@@ -1,6 +1,6 @@
 const { API_KEY, API_SECRET } = require('./../config.js')
 const axios = require('axios')
-const { saveNewUser, userLogin, swipeRight } = require('./../database/index.js')
+const { saveNewUser, userLogin, swipeRight, fetchFaves } = require('./../database/index.js')
 const { scrubber } = require('./scrubber')
 
 module.exports = {
@@ -62,7 +62,11 @@ module.exports = {
         get: async (req, res) => {
             let username = req.query.user
             let swipes = await fetchFaves(username)
-            res.send(swipes)
+            let arrayOfSwipes = []
+            for (var key in swipes) {
+                arrayOfSwipes.push(swipes[key])
+            }
+            res.send(arrayOfSwipes)
         }
     }
 }

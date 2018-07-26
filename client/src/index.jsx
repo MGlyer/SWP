@@ -22,6 +22,7 @@ class App extends React.Component {
         this.handleLogin = this.handleLogin.bind(this)
         this.goToGlobal = this.goToGlobal.bind(this)
         this.swipeRight = this.swipeRight.bind(this)
+        this.handleSwipeFetch = this.handleSwipeFetch.bind(this)
     }
 
 

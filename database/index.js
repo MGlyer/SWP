@@ -38,9 +38,15 @@ const swipeRight = async (username, pet, cb) => {
     }
 }
 
+const fetchFaves = async (username) => {
+    let data = await db.ref('/users/' + username + '/swipes/').once('value')
+    return data.val()
+}
+
 
 module.exports = {
     saveNewUser,
     userLogin,
-    swipeRight
+    swipeRight,
+    fetchFaves
 }
