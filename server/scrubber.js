@@ -14,14 +14,6 @@ module.exports = {
         scrubbed.shelterId = scrubbed.shelterId.$t
         scrubbed.shelterPetId = scrubbed.shelterPetId.$t
 
-        // if (scrubbed.options.hasOwnProperty('option')) {
-        //     let optionsArr = [];
-        //     scrubbed.options.option.forEach((option) => {
-        //         optionsArr.push(option.$t)
-        //     })
-        //     scrubbed.options.option = optionsArr
-        // }
-
         delete scrubbed.options
         delete scrubbed.status
 
