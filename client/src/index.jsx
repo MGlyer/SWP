@@ -16,7 +16,8 @@ class App extends React.Component {
             user: '',
             loginError: false,
             signupError: false,
-            swipeRights: []
+            swipeRights: [],
+            redirect: false
         }
         this.handleSignup = this.handleSignup.bind(this)
         this.handleLogin = this.handleLogin.bind(this)
@@ -30,7 +31,7 @@ class App extends React.Component {
     handleSignup(newUsername, NewPassword) {
         axios.post('/pets/signup', {username: newUsername, password: NewPassword})
              .then((response) => {
-                 if (response.data) this.setState({user: newUsername, loggedIn: true, signupError: false}, () => this.goToGlobal())
+                 if (response.data) this.setState({user: newUsername, loggedIn: true, signupError: false, redirect: true}, () => this.goToGlobal())
                  else this.setState({signupError: true})
              })
              .catch((err) => console.error(err))
@@ -49,8 +50,7 @@ class App extends React.Component {
         axios.get('/pets/login', {params: {username: username, password, password}})
              .then((response) => {
                  if (response.data) {
-                     this.setState({user: username, loggedIn: true, loginError: false}, () => {
-                        this.goToGlobal();
+                     this.setState({user: username, loggedIn: true, loginError: false, redirect: true}, () => {
                         this.handleSwipeFetch()
                      });
                      
@@ -62,7 +62,7 @@ class App extends React.Component {
 
     goToGlobal() {
         console.log('redirecting to global!');
-        <Redirect to='/global' />
+        return <Redirect to='/global' />
     }
 
     handleSwipeFetch() {
@@ -82,6 +82,7 @@ class App extends React.Component {
         return(
             <Router>
                 <div className="container">
+                {this.state.redirect ? <Redirect to='/global' /> : null }
                     <Navbar loggedIn = {this.state.loggedIn} />
                     we're on the page!
                     <Switch>

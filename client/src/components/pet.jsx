@@ -14,7 +14,7 @@ class PetProfile extends React.Component {
         if (pet) {
             return (
                 <div>
-                    <img src = {pet.media.photos.photo[0] ? pet.media.photos.photo[0].img : null} />
+                    <img src = {pet.media.photos.photo[2] ? pet.media.photos.photo[2].img : null} />
                     <br/>
 
                     <div>
