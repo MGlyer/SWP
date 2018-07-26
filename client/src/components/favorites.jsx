@@ -5,27 +5,42 @@ class Favorites extends React.Component {
     constructor(props){
         super(props)
         this.state = {
-            //some state
+            viewingSingle: false,
+            faveToView: null
         }
         //bindings
-
+        this.handleBackToFaves = this.handleBackToFaves.bind(this)
+        this.handleViewFave = this.handleViewFave.bind(this)
     }
 
     //Methods
+    handleBackToFaves() {
+        this.setState({viewingSingle: false, faveToView: null})
+    }
+
+    handleViewFave(pet) {
+        this.setState({viewingSingle: true, faveToView: pet})
+    }
 
     render() {
         if (this.props.faves) {
             return(
                 <div class = 'container'>
+                {this.state.viewingSingle ? 
+                    <button type='button' class = 'btn btn-info'
+                        onClick = {this.handleBackToFaves}
+                    >Back to Swipes</button>
+                    :
                     <div class='row'>
                         {this.props.faves.map((fave) => {
                             return(
                                 <div class= 'col-4'>
-                                <PetProfile petInfo = {fave} onSwiper = {false}/>
+                                <PetProfile petInfo = {fave} onSwiper = {false} view = {this.handleViewFave} />
                                 </div>
                             )
                         })}                        
                     </div>
+                }
                 </div>
             )
         } else {
