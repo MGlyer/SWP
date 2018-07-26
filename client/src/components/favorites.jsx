@@ -21,7 +21,7 @@ class Favorites extends React.Component {
                         {this.props.faves.map((fave) => {
                             return(
                                 <div class= 'col-4'>
-                                <PetProfile petInfo = {fave} />
+                                <PetProfile petInfo = {fave} onSwiper = {false}/>
                                 </div>
                             )
                         })}                        

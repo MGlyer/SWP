@@ -15,7 +15,13 @@ class PetProfile extends React.Component {
             return (
                 <div>
                     <div className = 'petInfo'>
-                        <img src = {pet.media.photos.photo[2] ? pet.media.photos.photo[2].img : null} />
+
+                        {this.props.onSwiper ?
+                            <img src = {pet.media.photos.photo[2] ? pet.media.photos.photo[2].img : null} />
+                            :
+                            <img src = {pet.media.photos.photo[1] ? pet.media.photos.photo[1].img : null} />
+                        }
+
                     </div>
                     <br/>
 

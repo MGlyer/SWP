@@ -47,6 +47,7 @@ class App extends React.Component {
     }
 
     handleLogin(username, password) {
+        console.log('you clicked a button!')
         axios.get('/pets/login', {params: {username: username, password, password}})
              .then((response) => {
                  if (response.data) {
