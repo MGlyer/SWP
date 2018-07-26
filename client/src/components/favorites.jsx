@@ -1,4 +1,5 @@
 import React from 'react'
+import PetProfile from './pet.jsx'
 
 class Favorites extends React.Component {
     constructor(props){
@@ -15,7 +16,13 @@ class Favorites extends React.Component {
     render() {
         if (this.props.faves) {
             return(
-                <div>your faves here</div>
+                <div>
+                    {this.props.faves.map((fave) => {
+                        return(
+                            <PetProfile petInfo = {fave} />
+                        )
+                    })}
+                </div>
             )
         } else {
             return (

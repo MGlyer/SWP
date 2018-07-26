@@ -58,6 +58,11 @@ module.exports = {
                 if (error) console.log(error)
                 else res.send('saved to your profile!')
             })
+        },
+        get: async (req, res) => {
+            let username = req.query.user
+            let swipes = await fetchFaves(username)
+            res.send(swipes)
         }
     }
 }

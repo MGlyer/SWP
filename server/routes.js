@@ -9,4 +9,6 @@ router.get('/more', controller.more.get);
 
 router.post('/swipeRight', controller.swipeRight.post);
 
+router.get('/swipeRight', controller.swipeRight.get)
+
 module.exports = router

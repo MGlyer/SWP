@@ -61,6 +61,16 @@ class App extends React.Component {
         <Redirect to='/global' />
     }
 
+    handleSwipeFetch() {
+        axios.get('/pets/swipeRight', {params: {user: this.state.user}})
+             .then((response) => {
+                 let currentRights = this.state.swipeRights
+                 currentRights.concat(response.data)
+                 this.setState({swipeRights: currentRights})
+             })
+             .catch((err) => console.error(err))
+    }
+
 
     //Render Section
     render() {
