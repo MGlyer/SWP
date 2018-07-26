@@ -12,7 +12,7 @@ class PetProfile extends React.Component {
         var pet = this.props.petInfo
 
         if (pet) {
-            return(
+            return (
                 <div>
                     <img src = {pet.media.photos.photo[0] ? pet.media.photos.photo[0].img : null} />
                     <br/>
@@ -31,6 +31,8 @@ class PetProfile extends React.Component {
                     </div>
                 </div>
             )
+        } else {
+            return(null)
         }
     }
 }

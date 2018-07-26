@@ -49,8 +49,11 @@ class App extends React.Component {
         axios.get('/pets/login', {params: {username: username, password, password}})
              .then((response) => {
                  if (response.data) {
-                     this.setState({user: username, loggedIn: true, loginError: false});
-                     this.goToGlobal()
+                     this.setState({user: username, loggedIn: true, loginError: false}, () => {
+                        this.goToGlobal();
+                        this.handleSwipeFetch()
+                     });
+                     
                  }
                  else this.setState({loginError: true})
              })

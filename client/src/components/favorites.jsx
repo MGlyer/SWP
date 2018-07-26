@@ -22,14 +22,11 @@ class Favorites extends React.Component {
                             <PetProfile petInfo = {fave} />
                         )
                     })}
-                    <button onClick={this.props.past} >load your past faves</button>
                 </div>
             )
         } else {
             return (
                 <div>You don't have any swipe rights yet!
-                    <br/>
-                    <button onClick={this.props.past} >load your past faves</button>
                 </div>
             )
         }
