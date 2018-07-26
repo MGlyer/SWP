@@ -66,11 +66,9 @@ class App extends React.Component {
         axios.get('/pets/swipeRight', {params: {user: this.state.user}})
              .then((response) => {
                  let currentRights = this.state.swipeRights
-                 response.data.forEach((petObj) => {
-                     for (var key in petObj) currentRights.push(petObj[key])
-                 })
-                 console.log(currentRights)
-                 this.setState({swipeRights: currentRights})
+                let newRights = currentRights.concat(response.data)
+                 console.log(newRights)
+                 this.setState({swipeRights: newRights})
              })
              .catch((err) => console.error(err))
     }
@@ -88,7 +86,8 @@ class App extends React.Component {
                         <Route path='/login' render = {() => <Login login = {this.handleLogin} error = {this.state.loginError} />} />
                         <Route path='/signup' render = {() => <Signup signup = {this.handleSignup} error = {this.state.signupError} />} />
                         <Route path='/global' render = {() => <Swiper swipe = {this.swipeRight} /> } />
-                        <Route path='/rights' render = {() => <Favorites past = {this.handleSwipeFetch} faves = {this.state.swipeRights.length > 0 ? this.state.swipeRights : null} /> } />
+                        <Route path='/rights' render = {() => <Favorites past = {this.handleSwipeFetch} 
+                            faves = {this.state.swipeRights.length > 0 ? this.state.swipeRights : null} /> } />
                     </Switch>
                 </div>
             </Router>

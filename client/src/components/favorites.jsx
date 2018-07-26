@@ -22,7 +22,7 @@ class Favorites extends React.Component {
                             <PetProfile petInfo = {fave} />
                         )
                     })}
-                    
+                    <button onClick={this.props.past} >load your past faves</button>
                 </div>
             )
         } else {
