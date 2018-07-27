@@ -32,6 +32,7 @@ class Login extends React.Component {
                 <input type='password' placeholder="Password" onChange = {this.handlePWChange} />
                 <br/>
                 <button onClick={() => this.props.fireLogin(this.state.usernameValue, this.state.passwordValue) } >email login</button>
+                <button onClick={ this.props.googleLogin } >Google Login</button>
             </div>
         )
     }

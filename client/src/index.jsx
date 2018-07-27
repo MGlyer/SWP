@@ -7,7 +7,7 @@ import Login from './components/login.jsx'
 import Signup from './components/signup.jsx'
 import Swiper from './components/swiper.jsx'
 import Favorites from './components/favorites.jsx'
-const {auth} = require('./../../database/connection.js')
+const {auth, googleAuth} = require('./../../database/connection.js')
 
 class App extends React.Component {
     constructor(props) {
@@ -26,6 +26,7 @@ class App extends React.Component {
         this.handleFirebaseSignup = this.handleFirebaseSignup.bind(this)
         this.handleAuthChange = this.handleAuthChange.bind(this)
         this.handleFirebaseSignout = this.handleFirebaseSignout.bind(this)
+        this.handleGoogleAuth = this.handleGoogleAuth.bind(this)
     }
 
     componentDidMount() {
@@ -34,6 +35,13 @@ class App extends React.Component {
 
 
     //Method section
+
+    handleGoogleAuth() {
+        console.log('you clicked the google button!')
+        auth.signInWithPopup(googleAuth)
+            .then((result) => console.log('youre logged in!', result.user))
+            .catch((error) => console.log("something went wrong...", error))
+    }
 
     handleFirebaseLogin(username, password) {
         auth.signInWithEmailAndPassword(username, password)
@@ -98,7 +106,7 @@ class App extends React.Component {
                     <Navbar loggedIn = {this.state.loggedIn} signout = {this.handleFirebaseSignout} />
                     <Switch>
                         <Route exact path='/' render = {() => <Redirect to='/login' />} />
-                        <Route path='/login' render = {() => <Login error = {this.state.loginError} 
+                        <Route path='/login' render = {() => <Login error = {this.state.loginError} googleLogin = {this.handleGoogleAuth}
                             fireLogin = {this.handleFirebaseLogin} />} />
                         <Route path='/signup' render = {() => <Signup error = {this.state.signupError} 
                             fireSignup = {this.handleFirebaseSignup} />} />
