@@ -20,9 +20,9 @@ class App extends React.Component {
             swipeRights: [],
             redirect: false
         }
-        this.handleSignup = this.handleSignup.bind(this)
-        this.handleLogin = this.handleLogin.bind(this)
-        this.goToGlobal = this.goToGlobal.bind(this)
+        // this.handleSignup = this.handleSignup.bind(this)
+        // this.handleLogin = this.handleLogin.bind(this)
+        // this.goToGlobal = this.goToGlobal.bind(this)
         this.swipeRight = this.swipeRight.bind(this)
         this.handleSwipeFetch = this.handleSwipeFetch.bind(this)
         this.handleSignout = this.handleSignout.bind(this)
@@ -38,14 +38,14 @@ class App extends React.Component {
 
 
     //Method section
-    handleSignup(newUsername, NewPassword) {
-        axios.post('/pets/signup', {username: newUsername, password: NewPassword})
-             .then((response) => {
-                 if (response.data) this.setState({user: newUsername, loggedIn: true, signupError: false, redirect: true}, () => this.goToGlobal())
-                 else this.setState({signupError: true})
-             })
-             .catch((err) => console.error(err))
-    }
+    // handleSignup(newUsername, NewPassword) {
+    //     axios.post('/pets/signup', {username: newUsername, password: NewPassword})
+    //          .then((response) => {
+    //              if (response.data) this.setState({user: newUsername, loggedIn: true, signupError: false, redirect: true}, () => this.goToGlobal())
+    //              else this.setState({signupError: true})
+    //          })
+    //          .catch((err) => console.error(err))
+    // }
 
     handleFirebaseLogin(username, password) {
         auth.signInWithEmailAndPassword(username, password)
@@ -70,7 +70,9 @@ class App extends React.Component {
                 console.log(firebaseUser)
                 let scrubbedEmail = firebaseUser.email.split('.').join('_')
                 this.setState({user: scrubbedEmail, loggedIn: true, loginError: false, redirect: true}, 
-                () => this.handleSwipeFetch())
+                () => {
+                    console.log('current username', this.state.user)
+                    this.handleSwipeFetch()})
             } else {
                 console.log('not logged in')
             }
@@ -86,25 +88,25 @@ class App extends React.Component {
              .catch((err) => console.error(err))
     }
 
-    handleLogin(username, password) {
-        console.log('you clicked a button!')
-        axios.get('/pets/login', {params: {username: username, password, password}})
-             .then((response) => {
-                 if (response.data) {
-                     this.setState({user: username, loggedIn: true, loginError: false, redirect: true}, () => {
-                        this.handleSwipeFetch()
-                     });
+    // handleLogin(username, password) {
+    //     console.log('you clicked a button!')
+    //     axios.get('/pets/login', {params: {username: username, password, password}})
+    //          .then((response) => {
+    //              if (response.data) {
+    //                  this.setState({user: username, loggedIn: true, loginError: false, redirect: true}, () => {
+    //                     this.handleSwipeFetch()
+    //                  });
                      
-                 }
-                 else this.setState({loginError: true})
-             })
-             .catch((err) => console.error(err))
-    }
+    //              }
+    //              else this.setState({loginError: true})
+    //          })
+    //          .catch((err) => console.error(err))
+    // }
 
-    goToGlobal() {
-        console.log('redirecting to global!');
-        return <Redirect to='/global' />
-    }
+    // goToGlobal() {
+    //     console.log('redirecting to global!');
+    //     return <Redirect to='/global' />
+    // }
 
     handleSwipeFetch() {
         axios.get('/pets/swipeRight', {params: {user: this.state.user}})
@@ -117,9 +119,9 @@ class App extends React.Component {
              .catch((err) => console.error(err))
     }
 
-    handleSignout() {
-        this.setState({user: '', loggedIn: false, swipeRights: [], redirect: false})
-    }
+    // handleSignout() {
+    //     this.setState({user: '', loggedIn: false, swipeRights: [], redirect: false})
+    // }
 
 
     //Render Section
@@ -131,9 +133,9 @@ class App extends React.Component {
                     <Navbar loggedIn = {this.state.loggedIn} signout = {this.handleFirebaseSignout} />
                     <Switch>
                         <Route exact path='/' render = {() => <Redirect to='/login' />} />
-                        <Route path='/login' render = {() => <Login login = {this.handleLogin} error = {this.state.loginError} 
+                        <Route path='/login' render = {() => <Login error = {this.state.loginError} 
                             fireLogin = {this.handleFirebaseLogin} />} />
-                        <Route path='/signup' render = {() => <Signup signup = {this.handleSignup} error = {this.state.signupError} 
+                        <Route path='/signup' render = {() => <Signup error = {this.state.signupError} 
                             fireSignup = {this.handleFirebaseSignup} />} />
                         <Route path='/global' render = {() => <Swiper swipe = {this.swipeRight} /> } />
                         <Route path='/rights' render = {() => <Favorites past = {this.handleSwipeFetch} 
