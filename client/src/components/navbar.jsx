@@ -14,11 +14,11 @@ let Navbar = (props) => {
                         <Link onClick = {props.signout} 
                             type="button" class="btn btn-secondary" to= '/login'>Sign Out</Link>
                     </ul>
-                    :
-                    <ul>
-                        <Link type="button" class="btn btn-info" to= '/login'>Login</Link>
-                        <Link type="button" class="btn btn-info" to= '/signup'>Signup</Link>
-                    </ul>
+                    : null
+                    // <ul>
+                    //     <Link type="button" class="btn btn-info" to= '/login'>Login</Link>
+                    //     <Link type="button" class="btn btn-info" to= '/signup'>Signup</Link>
+                    // </ul>
                 }
             </div>
         </div>

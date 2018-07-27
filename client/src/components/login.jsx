@@ -25,14 +25,15 @@ class Login extends React.Component {
     render() {
         return(
             <div>
-                <h3>Log In</h3>
+                <h3>Log In or Sign Up</h3>
+                <br/>
                 {this.props.error ? <div>Invalid Username or Password.  please try again</div> : null}
                 <input type='text' placeholder="Email" onChange = {this.handleUNChange} />
                 <br/>
                 <input type='password' placeholder="Password" onChange = {this.handlePWChange} />
                 <br/>
-                <button onClick={() => this.props.fireLogin(this.state.usernameValue, this.state.passwordValue) } >email login</button>
-                <button onClick={ this.props.googleLogin } >Google Login</button>
+                <button class="btn btn-info" onClick={() => this.props.fireLogin(this.state.usernameValue, this.state.passwordValue) } >Login</button>
+                <button class="btn btn-info" onClick={() => this.props.fireSignup(this.state.usernameValue, this.state.passwordValue) } >Signup</button>
 
                 <div id='auth-container'></div>
             </div>

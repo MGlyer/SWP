@@ -4,7 +4,6 @@ import axios from 'axios'
 import {BrowserRouter as Router, Route, Redirect, Switch} from 'react-router-dom'
 import Navbar from './components/navbar.jsx'
 import Login from './components/login.jsx'
-import Signup from './components/signup.jsx'
 import Swiper from './components/swiper.jsx'
 import Favorites from './components/favorites.jsx'
 const {auth, googleAuth} = require('./../../database/connection.js')
@@ -112,9 +111,7 @@ class App extends React.Component {
                     <Switch>
                         <Route exact path='/' render = {() => <Redirect to='/login' />} />
                         <Route path='/login' render = {() => <Login error = {this.state.loginError} googleLogin = {this.handleGoogleAuth}
-                            fireLogin = {this.handleFirebaseLogin} />} />
-                        <Route path='/signup' render = {() => <Signup error = {this.state.signupError} 
-                            fireSignup = {this.handleFirebaseSignup} />} />
+                            fireLogin = {this.handleFirebaseLogin} fireSignup = {this.handleFirebaseSignup} />} />
                         <Route path='/global' render = {() => <Swiper swipe = {this.swipeRight} /> } />
                         <Route path='/rights' render = {() => <Favorites past = {this.handleSwipeFetch} 
                             faves = {this.state.swipeRights.length > 0 ? this.state.swipeRights : null} /> } />
