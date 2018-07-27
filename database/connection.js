@@ -8,13 +8,15 @@ var config = {
     storageBucket: "",
     messagingSenderId: "189802972639"
 };
+
 const firebase = require('firebase')
-// const firebaseui = require('firebaseui')
+
 firebase.initializeApp(config);
+
 
 const database = firebase.database()
 const auth = firebase.auth()
-const googleAuth = new firebase.auth.GoogleAuthProvider()
+const googleAuth = new firebase.auth.GithubAuthProvider()
 
 // const authentication = firebase.auth().signInWithEmailAndPassword(provider).then(function(result) {
 //     // This gives you a Google Access Token. You can use it to access the Google API.

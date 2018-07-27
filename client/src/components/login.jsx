@@ -33,6 +33,8 @@ class Login extends React.Component {
                 <br/>
                 <button onClick={() => this.props.fireLogin(this.state.usernameValue, this.state.passwordValue) } >email login</button>
                 <button onClick={ this.props.googleLogin } >Google Login</button>
+
+                <div id='auth-container'></div>
             </div>
         )
     }

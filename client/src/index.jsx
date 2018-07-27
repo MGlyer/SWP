@@ -39,7 +39,11 @@ class App extends React.Component {
     handleGoogleAuth() {
         console.log('you clicked the google button!')
         auth.signInWithPopup(googleAuth)
-            .then((result) => console.log('youre logged in!', result.user))
+            .then((result) => {
+                let token = result.credential.accessToken;
+                let user = result.user
+                console.log('youre logged in!', result.user)
+            })
             .catch((error) => console.log("something went wrong...", error))
     }
 
