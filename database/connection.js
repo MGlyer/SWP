@@ -16,7 +16,7 @@ firebase.initializeApp(config);
 
 const database = firebase.database()
 const auth = firebase.auth()
-const googleAuth = new firebase.auth.GithubAuthProvider()
+const googleAuth = new firebase.auth.GoogleAuthProvider()
 
 // const authentication = firebase.auth().signInWithEmailAndPassword(provider).then(function(result) {
 //     // This gives you a Google Access Token. You can use it to access the Google API.

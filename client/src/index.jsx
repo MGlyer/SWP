@@ -41,6 +41,7 @@ class App extends React.Component {
         auth.signInWithPopup(googleAuth)
             .then((result) => {
                 let token = result.credential.accessToken;
+                // auth.signInWithCredential(token)
                 let user = result.user
                 console.log('youre logged in!', result.user)
             })
