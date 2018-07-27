@@ -9,7 +9,9 @@ module.exports = {
         post: (req, res) => {
             let username = req.body.username;
             let password = req.body.password;
-            saveNewUser(username, password, (err, unique) => {
+            let newUN = username.split('.').join('_')
+            console.log(newUN)
+            saveNewUser(newUN, password, (err, unique) => {
                 if (err) console.log('something went wrong querying the db: ', err)
                 if (null, !unique) res.send(false)
                 else res.send(false)

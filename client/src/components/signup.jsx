@@ -28,11 +28,11 @@ class Signup extends React.Component {
             <div>
                 <h2>Sign up</h2>
                 {this.props.error ? <div>That Username is already taken.  Please try another</div>: null}
-                Username: <input type= 'text' onChange = {this.handleUNChange} />
+                <input type= 'text' placeholder="Email" onChange = {this.handleUNChange} />
                 <br/>
-                Password: <input type= 'password' onChange = {this.handlePWChange} />
+                <input type= 'password' placeholder='Password' onChange = {this.handlePWChange} />
                 <br/>
-                <button onClick = {() => this.props.signup(this.state.usernameValue, this.state.passwordValue)}>Sign up</button>
+                {/* <button onClick = {() => this.props.signup(this.state.usernameValue, this.state.passwordValue)}>Sign up</button> */}
                 <button onClick = {() => this.props.fireSignup(this.state.usernameValue, this.state.passwordValue)}>Email Signup</button>
             </div>
         )

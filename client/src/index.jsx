@@ -49,12 +49,14 @@ class App extends React.Component {
 
     handleFirebaseLogin(username, password) {
         auth.signInWithEmailAndPassword(username, password)
-            .catch((error) => console.log(error))
+            .catch((error) => this.setState({loginError: true}))
     }
 
     handleFirebaseSignup(username, password) {
         auth.createUserWithEmailAndPassword(username, password)
-            .catch((error) => console.log(error))
+            .then(() => axios.post('/pets/signup', {username: username, password: password})
+                             .catch((err) => console.log(err)))
+            .catch((error) => this.setState({loginError: true}))
     }
 
     handleFirebaseSignout() {
@@ -66,7 +68,9 @@ class App extends React.Component {
         auth.onAuthStateChanged(firebaseUser => {
             if (firebaseUser) {
                 console.log(firebaseUser)
-                this.setState({user: firebaseUser.email, loggedIn: true, loginError: false, redirect: true})
+                let scrubbedEmail = firebaseUser.email.split('.').join('_')
+                this.setState({user: scrubbedEmail, loggedIn: true, loginError: false, redirect: true}, 
+                () => this.handleSwipeFetch())
             } else {
                 console.log('not logged in')
             }
@@ -106,7 +110,7 @@ class App extends React.Component {
         axios.get('/pets/swipeRight', {params: {user: this.state.user}})
              .then((response) => {
                  let currentRights = this.state.swipeRights
-                let newRights = currentRights.concat(response.data)
+                 let newRights = currentRights.concat(response.data)
                  console.log(newRights)
                  this.setState({swipeRights: newRights})
              })
