@@ -46,6 +46,9 @@ class Swiper extends React.Component {
     render() {
         return(
             <div>
+                <div className="title-container">
+                    <h3>You Can Haz Adopt Me?</h3>
+                </div>
                 <div className = 'btnContainer'>
                     <button type='button' class='btn btn-danger'  onClick = {this.nextPet} >Swipe Left</button>
                     <button type='button' class='btn btn-info' onClick = {this.toggleShowDescription}>Toggle More Info</button>
