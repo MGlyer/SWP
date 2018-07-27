@@ -11,7 +11,8 @@ let Navbar = (props) => {
                     <ul>
                         <Link type="button" class="btn btn-info" to= '/global'>Swipe</Link>
                         <Link type="button" class="btn btn-info" to= '/rights'>Review Swipes</Link>
-                        <Link onClick = {props.signout} type="button" class="btn btn-secondary" to= '/login'>Sign Out</Link>
+                        <Link onClick = {props.signout} 
+                            type="button" class="btn btn-secondary" to= '/login'>Sign Out</Link>
                     </ul>
                     :
                     <ul>

@@ -33,6 +33,7 @@ class Signup extends React.Component {
                 Password: <input type= 'password' onChange = {this.handlePWChange} />
                 <br/>
                 <button onClick = {() => this.props.signup(this.state.usernameValue, this.state.passwordValue)}>Sign up</button>
+                <button onClick = {() => this.props.fireSignup(this.state.usernameValue, this.state.passwordValue)}>Email Signup</button>
             </div>
         )
     }

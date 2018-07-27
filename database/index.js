@@ -1,4 +1,4 @@
-const db = require('./connection')
+const db = require('./connection').database
 
 const saveNewUser = async (username, password, cb) => {
     let uniqueTest = await db.ref('/users/').child(username).once('value')

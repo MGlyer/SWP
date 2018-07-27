@@ -9,9 +9,29 @@ var config = {
     messagingSenderId: "189802972639"
 };
 const firebase = require('firebase')
+// const firebaseui = require('firebaseui')
 firebase.initializeApp(config);
 
 const database = firebase.database()
+const auth = firebase.auth()
 
-module.exports = database
+// const authentication = firebase.auth().signInWithEmailAndPassword(provider).then(function(result) {
+//     // This gives you a Google Access Token. You can use it to access the Google API.
+//     var token = result.credential.accessToken;
+//     // The signed-in user info.
+//     var user = result.user;
+//     // ...
+//   }).catch(function(error) {
+//     var errorCode = error.code;
+//     var errorMessage = error.message;
+//     var email = error.email;
+//     var credential = error.credential;
+//     // ...
+//   });
+
+module.exports = {
+    database,
+    auth
+}
+
 

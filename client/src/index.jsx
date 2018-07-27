@@ -7,6 +7,7 @@ import Login from './components/login.jsx'
 import Signup from './components/signup.jsx'
 import Swiper from './components/swiper.jsx'
 import Favorites from './components/favorites.jsx'
+const {auth} = require('./../../database/connection.js')
 
 class App extends React.Component {
     constructor(props) {
@@ -25,6 +26,14 @@ class App extends React.Component {
         this.swipeRight = this.swipeRight.bind(this)
         this.handleSwipeFetch = this.handleSwipeFetch.bind(this)
         this.handleSignout = this.handleSignout.bind(this)
+        this.handleFirebaseLogin = this.handleFirebaseLogin.bind(this)
+        this.handleFirebaseSignup = this.handleFirebaseSignup.bind(this)
+        this.handleAuthChange = this.handleAuthChange.bind(this)
+        this.handleFirebaseSignout = this.handleFirebaseSignout.bind(this)
+    }
+
+    componentDidMount() {
+        this.handleAuthChange()
     }
 
 
@@ -36,6 +45,32 @@ class App extends React.Component {
                  else this.setState({signupError: true})
              })
              .catch((err) => console.error(err))
+    }
+
+    handleFirebaseLogin(username, password) {
+        auth.signInWithEmailAndPassword(username, password)
+            .catch((error) => console.log(error))
+    }
+
+    handleFirebaseSignup(username, password) {
+        auth.createUserWithEmailAndPassword(username, password)
+            .catch((error) => console.log(error))
+    }
+
+    handleFirebaseSignout() {
+        auth.signOut()
+        this.setState({user: '', loggedIn: false, swipeRights: [], redirect: false})
+    }
+
+    handleAuthChange() {
+        auth.onAuthStateChanged(firebaseUser => {
+            if (firebaseUser) {
+                console.log(firebaseUser)
+                this.setState({user: firebaseUser.email, loggedIn: true, loginError: false, redirect: true})
+            } else {
+                console.log('not logged in')
+            }
+        })
     }
 
     swipeRight(newPet) {
@@ -89,11 +124,13 @@ class App extends React.Component {
             <Router>
                 <div>
                 {this.state.redirect ? <Redirect to='/global' /> : null }
-                    <Navbar loggedIn = {this.state.loggedIn} signout = {this.handleSignout} />
+                    <Navbar loggedIn = {this.state.loggedIn} signout = {this.handleFirebaseSignout} />
                     <Switch>
                         <Route exact path='/' render = {() => <Redirect to='/login' />} />
-                        <Route path='/login' render = {() => <Login login = {this.handleLogin} error = {this.state.loginError} />} />
-                        <Route path='/signup' render = {() => <Signup signup = {this.handleSignup} error = {this.state.signupError} />} />
+                        <Route path='/login' render = {() => <Login login = {this.handleLogin} error = {this.state.loginError} 
+                            fireLogin = {this.handleFirebaseLogin} />} />
+                        <Route path='/signup' render = {() => <Signup signup = {this.handleSignup} error = {this.state.signupError} 
+                            fireSignup = {this.handleFirebaseSignup} />} />
                         <Route path='/global' render = {() => <Swiper swipe = {this.swipeRight} /> } />
                         <Route path='/rights' render = {() => <Favorites past = {this.handleSwipeFetch} 
                             faves = {this.state.swipeRights.length > 0 ? this.state.swipeRights : null} /> } />

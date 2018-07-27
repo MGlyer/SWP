@@ -21,16 +21,18 @@ class Login extends React.Component {
         this.setState({passwordValue: e.target.value})
     }
 
+
     render() {
         return(
             <div>
                 <h3>Log In</h3>
                 {this.props.error ? <div>Invalid Username or Password.  please try again</div> : null}
-                Username: <input type='text' onChange = {this.handleUNChange} />
+                <input type='text' placeholder="Username" onChange = {this.handleUNChange} />
                 <br/>
-                Password: <input type='password' onChange = {this.handlePWChange} />
+                <input type='password' placeholder="Password" onChange = {this.handlePWChange} />
                 <br/>
                 <button onClick= {() => this.props.login(this.state.usernameValue, this.state.passwordValue)} >Log In</button>
+                <button onClick={() => this.props.fireLogin(this.state.usernameValue, this.state.passwordValue) } >email login</button>
             </div>
         )
     }
