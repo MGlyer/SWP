@@ -20,12 +20,8 @@ class App extends React.Component {
             swipeRights: [],
             redirect: false
         }
-        // this.handleSignup = this.handleSignup.bind(this)
-        // this.handleLogin = this.handleLogin.bind(this)
-        // this.goToGlobal = this.goToGlobal.bind(this)
         this.swipeRight = this.swipeRight.bind(this)
         this.handleSwipeFetch = this.handleSwipeFetch.bind(this)
-        this.handleSignout = this.handleSignout.bind(this)
         this.handleFirebaseLogin = this.handleFirebaseLogin.bind(this)
         this.handleFirebaseSignup = this.handleFirebaseSignup.bind(this)
         this.handleAuthChange = this.handleAuthChange.bind(this)
@@ -38,14 +34,6 @@ class App extends React.Component {
 
 
     //Method section
-    // handleSignup(newUsername, NewPassword) {
-    //     axios.post('/pets/signup', {username: newUsername, password: NewPassword})
-    //          .then((response) => {
-    //              if (response.data) this.setState({user: newUsername, loggedIn: true, signupError: false, redirect: true}, () => this.goToGlobal())
-    //              else this.setState({signupError: true})
-    //          })
-    //          .catch((err) => console.error(err))
-    // }
 
     handleFirebaseLogin(username, password) {
         auth.signInWithEmailAndPassword(username, password)
@@ -88,25 +76,6 @@ class App extends React.Component {
              .catch((err) => console.error(err))
     }
 
-    // handleLogin(username, password) {
-    //     console.log('you clicked a button!')
-    //     axios.get('/pets/login', {params: {username: username, password, password}})
-    //          .then((response) => {
-    //              if (response.data) {
-    //                  this.setState({user: username, loggedIn: true, loginError: false, redirect: true}, () => {
-    //                     this.handleSwipeFetch()
-    //                  });
-                     
-    //              }
-    //              else this.setState({loginError: true})
-    //          })
-    //          .catch((err) => console.error(err))
-    // }
-
-    // goToGlobal() {
-    //     console.log('redirecting to global!');
-    //     return <Redirect to='/global' />
-    // }
 
     handleSwipeFetch() {
         axios.get('/pets/swipeRight', {params: {user: this.state.user}})
@@ -118,10 +87,6 @@ class App extends React.Component {
              })
              .catch((err) => console.error(err))
     }
-
-    // handleSignout() {
-    //     this.setState({user: '', loggedIn: false, swipeRights: [], redirect: false})
-    // }
 
 
     //Render Section
