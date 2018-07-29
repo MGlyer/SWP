@@ -14,4 +14,4 @@ server.use('/pets', router)
 
 //Server Boot Up
 let port = process.env.PORT || 8080
-server.listen(8080, () => console.log('now listening on port ', port))
+server.listen(port, () => console.log('now listening on port ', port))
