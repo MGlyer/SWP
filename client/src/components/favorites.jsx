@@ -48,7 +48,9 @@ class Favorites extends React.Component {
                                 <p>Age: {pet.age ? pet.age : null}</p>
                                 <p>Gender: {pet.sex ? pet.sex : null}</p>
                                 <p>Size: {pet.size ? pet.size : null}</p>
-                                <p>Description: {pet ? pet.description : null}</p>
+                                <p>Description: {pet.description ? pet.description : null}</p>
+                                <p>Contact information: {pet.contact.address1 ? pet.contact.address1 : null}, {pet.contact.city ? pet.contact.city : null}. <br/>  
+                                    {pet.contact.email ? pet.contact.email : null}</p>
                             </div>
                         </div>
 
