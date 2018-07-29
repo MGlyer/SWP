@@ -1,4 +1,10 @@
-const { API_KEY, API_SECRET } = require('./../config.js')
+// const { API_KEY, API_SECRET } = require('./../config.js')
+let API_KEY
+try {
+    API_KEY = require('./../config.js').API_KEY
+} catch(err) {
+    API_KEY = process.env.API_KEY
+}
 const axios = require('axios')
 const { saveNewUser, userLogin, swipeRight, fetchFaves } = require('./../database/index.js')
 const { scrubber } = require('./scrubber')
