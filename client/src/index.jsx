@@ -94,7 +94,8 @@ class App extends React.Component {
              .then((response) => {
                  let currentRights = this.state.swipeRights
                  let newRights = currentRights.concat(response.data)
-                 console.log(newRights)
+                 console.log('new faves', newRights)
+                 console.log('old faves', currentRights)
                  this.setState({swipeRights: newRights})
              })
              .catch((err) => console.error(err))

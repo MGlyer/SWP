@@ -60,8 +60,8 @@ class Swiper extends React.Component {
                     {/* <button onClick = {this.getMorePets}>More Life</button> */}
                 </div>
                 <div className='petContainer'>
-                    <PetProfile showDescription = {this.state.showDescription} onSwiper = {true}
-                        petInfo = {this.state.listOfAnimals.length > 0 ? this.state.listOfAnimals[0].petfinder.pet : null} />
+                    <PetProfile showDescription = {this.state.showDescription} onSwiper = {true} 
+                         petInfo = {this.state.listOfAnimals.length > 0 ? this.state.listOfAnimals[0].petfinder.pet : null} />
                 </div>
             </div>
         )

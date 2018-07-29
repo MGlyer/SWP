@@ -1,4 +1,11 @@
-const {FIREBASE_API_KEY} = require('./../config')
+let FIREBASE_API_KEY
+try {
+    FIREBASE_API_KEY = require('./../config').FIREBASE_API_KEY
+} catch(err) {
+    FIREBASE_API_KEY = process.env.FIREBASE_API_KEY
+}
+
+// const {FIREBASE_API_KEY} = require('./../config')
 var config = {
     apiKey: FIREBASE_API_KEY,
     // authDomain: "swp-petadoption.firebaseapp.com",
