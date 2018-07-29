@@ -7,7 +7,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "react-dev": "webpack -d --watch",
     "server-dev": "nodemon server/index.js",
-    "start" : "webpack -d && node server/index.js"
+    "start": "webpack -d && node server/index.js"
   },
   "repository": {
     "type": "git",
@@ -24,7 +24,6 @@
     "body-parser": "1.18.3",
     "cors": "2.8.4",
     "express": "4.16.3",
-    "express-session": "1.15.6",
     "firebase": "^5.3.0",
     "firebaseui": "^3.2.0",
     "mongoose": "5.2.4",
