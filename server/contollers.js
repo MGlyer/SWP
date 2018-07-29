@@ -44,15 +44,16 @@ module.exports = {
         get: async (req, res) => {
             let searchZip = req.query.zipcode
             console.log('in the server controllers.', searchZip)
-            let pet1 = await axios.get(`http://api.petfinder.com/pet.getRandom?key=${API_KEY}&location=${searchZip}&output=basic&format=json`)
-            let pet2 = await axios.get(`http://api.petfinder.com/pet.getRandom?key=${API_KEY}&location=${searchZip}&output=basic&format=json`)
-            // let pet3 = await axios.get(`http://api.petfinder.com/pet.getRandom?key=${API_KEY}&output=basic&format=json`)
+            let pet1 = await axios.get(`http://api.petfinder.com/pet.getRandom?key=${API_KEY}&output=basic&format=json`)
+            let pet2 = await axios.get(`http://api.petfinder.com/pet.getRandom?key=${API_KEY}&output=basic&format=json`)
+            let pet3 = await axios.get(`http://api.petfinder.com/pet.getRandom?key=${API_KEY}&output=basic&format=json`)
             // let pet4 = await axios.get(`http://api.petfinder.com/pet.getRandom?key=${API_KEY}&output=basic&format=json`)
             // let pet5 = await axios.get(`http://api.petfinder.com/pet.getRandom?key=${API_KEY}&output=basic&format=json`)
             // res.send([pet1.data, pet2.data, pet3.data, pet4.data, pet5.data])
             scrubber(pet1.data)
             scrubber(pet2.data)
-            res.send([pet1.data, pet2.data])
+            scrubber(pet3.data)
+            res.send([pet1.data, pet2.data, pet3.data])
         }
     },
 
