@@ -2,6 +2,7 @@ let FIREBASE_API_KEY
 try {
     FIREBASE_API_KEY = require('./../config').FIREBASE_API_KEY
 } catch(err) {
+    console.log('trying process env', process.env.FIREBASE_API_KEY)
     FIREBASE_API_KEY = process.env.FIREBASE_API_KEY
 }
 
